@@ -31,7 +31,7 @@ calculator/
 ## 💻 使用方法
 1. 将项目下载或克隆到本地  
    ```bash:disable-run
-   git clone https://github.com/你的用户名/calculator.git
+   git clone https://github.com/Tomzying/calculator.git
    cd calculator
    ```
 
