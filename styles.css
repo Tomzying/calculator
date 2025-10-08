@@ -3,56 +3,151 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height:  100vh;
+    height: 100vh;
     background-color: hsl(0, 0%, 95%);
 }
+
 #calculator {
     font-family: Arial, sans-serif;
-    background-color: hsl(0, 0%, 15%);
-    border-radius: 15px;
-    max-width: 500px;
+    background-color: hsl(0, 0%, 0%);
+    border-radius: 9px; /* 15×0.6 */
+    max-width: 300px;   /* 500×0.6 */
     overflow: hidden;
 }
+
+/* 全局建议 */
+*, *::before, *::after { box-sizing: border-box; }
+
+/* 显示区 */
 #display {
     width: 100%;
-    padding: 20px;
-    font-size: 5rem;
-    color: white;
-    text-align: left;
+    padding: 12px;             /* 20×0.6 */
+    text-align: right;
+    font-size: 3rem;           /* 5×0.6 */
+    overflow: hidden;
+    white-space: nowrap;
     border: none;
-    background-color: hsl(0, 0%, 20%);
+    color: white;
+    background-color: hsl(0, 0%, 0%);
 }
+
 #keys {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    padding: 25px;
+    gap: 6px;                  /* 10×0.6 */
+    padding: 15px;             /* 25×0.6 */
 }
+
 button {
-    width: 100px;
-    height: 100px;
-    border-radius: 50px;
+    width: 60px;               /* 100×0.6 */
+    height: 60px;
+    border-radius: 30px;       /* 50×0.6 */
     border: none;
-    background-color:hsl(0, 0%, 30%);
+    background-color: hsl(0, 0%, 30%);
     color: white;
-    font-size: 3rem;
+    font-size: 1.8rem;         /* 3×0.6 */
     font-weight: bold;
     cursor: pointer;
 }
+
 button:hover {
     background-color: hsl(0, 0%, 40%);
 }
+
 button:active {
     background-color: hsl(0, 0%, 50%);
     transform: scale(0.95);
 }
+
 .operator-btn {
     background-color: hsl(35, 100%, 55%);
 }
+
 .operator-btn:hover {
     background-color: hsl(35, 100%, 65%);
 }
+
 .operator-btn:active {
     background-color: hsl(35, 100%, 75%);
     transform: scale(0.95);
+}
+
+.function-btn {
+    background-color: hsl(0, 0%, 55%);
+}
+
+.function-btn:hover {
+    background-color: hsl(0, 0%, 65%);
+}
+
+.function-btn:active {
+    background-color: hsl(0, 0%, 75%);
+}
+
+/* === 手机外框（自适应内部尺寸，不改变 #calculator 原样式） === */
+.phone {
+  display: inline-block;
+  padding: 7px;                /* 12×0.6 */
+  border-radius: 36px;         /* 60×0.6 */
+  background: hsl(0, 5%, 24%);
+  box-shadow:
+    0 14px 29px rgba(0,0,0,.25),
+    0 2px 5px rgba(0,0,0,.18) inset;
+}
+
+/* 内层黑色倒角区 */
+.bezel {
+  position: relative;
+  border-radius: 30px;         /* 50×0.6 */
+  background: #000;
+  overflow: hidden;
+  padding-top: 19px;           /* 32×0.6 */
+}
+
+/* 刘海 */
+.notch {
+  position: absolute;
+  top: 3px; left: 50%;
+  transform: translateX(-50%);
+  width: 20%; height: 13px;    /* 34×0.6, 22×0.6 */
+  background: #000;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.notch .camera {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #3aa 10%, #111 60%);
+  box-shadow: 0 0 0 1px #0b0b0b;
+}
+
+.notch .speaker {
+  width: 34px;
+  height: 4px;
+  border-radius: 3px;
+  background: linear-gradient(#222, #111);
+}
+
+/* 屏幕区域 */
+.screen {
+  padding: 7px;                /* 12×0.6 */
+  background: #000;
+  border-radius: 36px;         /* 60×0.6 */
+}
+
+/* Home 指示条 */
+.screen::after {
+  content: "";
+  display: block;
+  margin: 7px auto 3px;        /* 12×0.6, 4×0.6 */
+  width: 17%;                  /* 28×0.6 */
+  height: 2px;                 /* 4×0.6 */
+  border-radius: 3px;
+  background: hsl(0, 0%, 100%);
 }
